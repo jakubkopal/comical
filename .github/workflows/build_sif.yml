@@ -18,7 +18,8 @@ jobs:
             -v "$PWD":/work \
             -w /work \
             quay.io/singularity/singularity:v3.11.4 \
-            singularity build comical_latest.sif docker://ghcr.io/${{ github.repository_owner }}/comical:latest
+            /usr/local/bin/singularity build comical_latest.sif docker://ghcr.io/${{ github.repository_owner }}/comical:latest
+
 
       - name: Upload SIF artifact
         uses: actions/upload-artifact@v4
