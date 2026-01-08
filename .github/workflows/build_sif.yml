@@ -1,11 +1,69 @@
-name: build-sif
+  UW PICO 5.09                           New Buffer
 
-on:
-  workflow_dispatch: {}
 
-jobs:
-  sif:
-    runs-on: ubuntu-latest
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                  [ New file ]
+^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Pg   ^K Cut Text  ^C Cur Pos
+^X Exit      ^J Justify   ^W Where is  ^V Next Pg   ^U UnCut Text^T To Spell
+Last login: Thu Jan  8 15:16:27 on ttys002
+➜  ~ cd Downloads/tsd/comical-main
+➜  comical-main git:(main) nano .github/workflows/build_sif.yml
+
+➜  comical-main git:(main) ✗ ^[[200~
+[200~[200~zsh: bad pattern: ^[[200~
+➜  comical-main git:(main) ✗ git add .github/workflows/build_sif.yml
+git commit -m "Add workflow to build Apptainer SIF"
+git push
+
+[main ee73c75] Add workflow to build Apptainer SIF
+ Committer: Jakub Kopal <jakubkop@dot1x-193-157-216-39.uio.no>
+Your name and email address were configured automatically based
+  UW PICO 5.09                           New Buffer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                               [ Read 28 lines ]
+^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Pg   ^K Cut Text  ^C Cur Pos
+^X Exit      ^J Justify   ^W Where is  ^V Next Pg   ^U UnCut Text^T To Spell
+  UW PICO 5.09         File: .github/workflows/build_sif.yml          Modified
+
+runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: read
@@ -18,7 +76,7 @@ jobs:
 
       - name: Build SIF from GHCR image
         run: |
-          apptainer build comical_latest.sif docker://ghcr.io/${{ github.repository_owner }}/comical:latest
+          apptainer build comical_latest.sif docker://ghcr.io/${{ github.reposi$
 
       - name: Upload SIF artifact
         uses: actions/upload-artifact@v4
@@ -26,3 +84,5 @@ jobs:
           name: comical_latest_sif
           path: comical_latest.sif
 
+^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Pg   ^K Cut Text  ^C Cur Pos
+^X Exit      ^J Justify   ^W Where is  ^V Next Pg   ^U UnCut Text^T To Spell
