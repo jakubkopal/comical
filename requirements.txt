@@ -31,7 +31,7 @@ fsspec==2023.4.0
 aiohttp==3.8.3
 dill==0.3.6
 multiprocess==0.70.14
-xxhash
+xxhash==3.5.0
 packaging==23.0
 
 # Pip-only dependencies from comical_env.yml:
