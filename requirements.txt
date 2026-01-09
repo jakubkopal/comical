@@ -33,6 +33,7 @@ dill==0.3.6
 multiprocess==0.70.14
 xxhash==3.5.0
 packaging==23.0
+ray==2.10.0
 
 # Pip-only dependencies from comical_env.yml:
 absl-py==1.4.0
