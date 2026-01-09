@@ -11,6 +11,15 @@ jobs:
       packages: read
 
     steps:
+      - name: Free disk space
+        run: |
+          docker system prune -af || true
+          sudo rm -rf /usr/share/dotnet || true
+          sudo rm -rf /opt/ghc || true
+          sudo rm -rf /usr/local/share/boost || true
+          sudo rm -rf /usr/local/lib/android || true
+          df -h
+
       - name: Build SIF using SingularityCE container
         run: |
           set -euo pipefail
