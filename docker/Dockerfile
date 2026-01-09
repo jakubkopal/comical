@@ -13,6 +13,7 @@ COPY . /app
 # Upgrade pip and install dependencies (now that requirements.txt exists)
 RUN pip install --no-cache-dir -U pip \
  && pip install --no-cache-dir -r requirements.txt
+RUN python -m pip install --no-cache-dir --force-reinstall "numpy==1.24.3"
 
 # Quick self-tests
 RUN python -c "import sys; print(sys.version)"
