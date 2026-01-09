@@ -1,5 +1,5 @@
 # GPU-ready base (CUDA 11.8 + PyTorch). Matches your comical_env.yml intent.
-FROM pytorch/pytorch:2.0.1-cuda11.8-cudnn8-runtime
+FROM pytorch/pytorch:2.1.0-cuda11.8-cudnn8-runtime
 
 # System deps
 RUN apt-get update && apt-get install -y \
