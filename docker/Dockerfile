@@ -1,17 +1,24 @@
-FROM nvcr.io/nvidia/pytorch:23.10-py3
+# GPU-ready base (CUDA 11.8 + PyTorch). Matches your comical_env.yml intent.
+FROM pytorch/pytorch:2.1.0-cuda11.8-cudnn8-runtime
 
-ENV PYTHONUNBUFFERED=1 \
-    PIP_DISABLE_PIP_VERSION_CHECK=1 \
-    PIP_NO_CACHE_DIR=1
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-      git ca-certificates \
-      libglib2.0-0 libsm6 libxext6 libxrender1 \
+# System deps
+RUN apt-get update && apt-get install -y \
+    git \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-RUN python -m pip install --upgrade pip setuptools wheel
-RUN python -m pip install "numpy<2"
+WORKDIR /app
+COPY . /app
 
-COPY requirements.txt /opt/swinbrain/requirements.txt
-RUN python -m pip install -r /opt/swinbrain/requirements.txt
-RUN python -m pip install --upgrade --force-reinstall "numpy<2"
+# Upgrade pip and install dependencies (now that requirements.txt exists)
+RUN pip install --no-cache-dir -U pip \
+ && pip install --no-cache-dir -r requirements.txt
+RUN python -m pip install --no-cache-dir --force-reinstall "numpy==1.24.3"
+
+# Quick self-tests
+RUN python -c "import sys; print(sys.version)"
+RUN python -c "import numpy as np; print('numpy', np.__version__)"
+RUN python -c "import torch; print('torch', torch.__version__, 'cuda?', torch.cuda.is_available())"
+
+# Default command (you can change this later)
+CMD ["python", "/app/wrapper.py", "--help"]
